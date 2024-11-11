@@ -50,6 +50,13 @@ class _ButtonState extends State<Button> {
     });
   }
 
+  String get buttonText => _isSelected ? "Selected" : "Not Selected";
+
+  Color get textColor => _isSelected ? Colors.white : Colors.black;
+
+  Color get backgroundColor =>
+      _isSelected ? Colors.blue.shade500 : Colors.blue.shade50;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -58,14 +65,13 @@ class _ButtonState extends State<Button> {
       child: ElevatedButton(
         onPressed: _toggleSelection,
         style: ElevatedButton.styleFrom(
-          backgroundColor:
-              _isSelected ? Colors.blue.shade500 : Colors.blue.shade50,
+          backgroundColor: backgroundColor,
         ),
         child: Center(
           child: Text(
-            _isSelected ? "Selected" : "Not Selected",
+            buttonText,
             style: TextStyle(
-              color: _isSelected ? Colors.white : Colors.black,
+              color: textColor,
             ),
           ),
         ),
